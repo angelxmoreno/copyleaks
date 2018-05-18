@@ -1,0 +1,38 @@
+{
+  "name": "amoreno/copyleaks",
+  "description": "A PHP 5.6 SDK for the CopyLeaks Plagiarism Checker",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Angel S. Moreno",
+      "email": "angelxmoreno@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Axm\\CopyLeaks\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Axm\\CopyLeaks\\Test\\": "tests"
+    }
+  },
+  "prefer-stable": true,
+  "require": {
+    "php": "^5.6"
+  },
+  "config": {
+    "sort-packages": true,
+    "bin-dir": "bin"
+  },
+  "scripts": {
+    "cs:check": "phpcs --colors -p --standard=PSR2 ./src ./tests",
+    "cs:fix": "phpcbf --colors --standard=PSR2 ./src ./tests",
+    "tests:check": "kahlan --cc=true --reporter=verbose",
+    "tests:coverage": "kahlan --cc=true --reporter=verbose --coverage=4",
+    "tests:report": "kahlan --cc=true --reporter=bar --coverage=4 --clover=clover.xml",
+    "tests:clover": "kahlan --no-header --cc=true --reporter=bar --clover=clover.xml"
+  }
+}
