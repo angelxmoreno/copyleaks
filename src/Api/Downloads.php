@@ -2,6 +2,7 @@
 namespace Axm\CopyLeaks\Api;
 
 use Axm\CopyLeaks\Constants;
+use Axm\CopyLeaks\Entities\ComparisionReport;
 use Axm\CopyLeaks\Response\Response;
 
 /**
@@ -48,8 +49,8 @@ trait Downloads
     }
 
     /**
-     * @param string $result_id
-     * @return string
+     * @param int $result_id
+     * @return ComparisionReport
      */
     public function comparisonReport($result_id)
     {
@@ -61,8 +62,6 @@ trait Downloads
             ]
         );
 
-        return $response->getBody();
+        return ComparisionReport::createFromResponse($response);
     }
-
-
 }

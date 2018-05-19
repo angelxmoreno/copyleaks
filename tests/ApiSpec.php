@@ -6,6 +6,7 @@ use Axm\CopyLeaks\Request\RequestsAdapter;
 use Axm\CopyLeaks\Entities\Result;
 use Axm\CopyLeaks\Collections\ResultsCollection;
 use Axm\CopyLeaks\Collections\ProcessesCollection;
+use Axm\CopyLeaks\Entities\ComparisionReport;
 
 describe(Api::class, function () {
     given('process_id', function () {
@@ -111,9 +112,8 @@ describe(Api::class, function () {
         });
         it('can get a comparison report', function () {
             $report = $this->api->comparisonReport($this->result_id);
-            var_dump($report);
             expect($report)
-                ->toBeA('array');
+                ->toBeAnInstanceOf(ComparisionReport::class);
         });
     });
 });

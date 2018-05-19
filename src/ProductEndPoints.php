@@ -7,6 +7,15 @@ use Cake\Utility\Hash;
 /**
  * Class ProductEndPoints
  * @package Axm\CopyLeaks
+ *
+ * To create this do le copy-pasta and do a search for
+ *      ^(POST|GET|DELETE) ([^\n ]+)\n([^\n]+)
+ * and replace with
+ * '$2' => [
+ * 'type' => Constants::HTTP_$1,
+ * 'uri' => '/$2',
+ * 'description' => '$3'
+ * ],
  */
 class ProductEndPoints
 {
