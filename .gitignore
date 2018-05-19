@@ -1,6 +1,7 @@
 composer.phar
 vendor
 .idea/
+.env
 
 docker/data/redis/*
 !docker/data/redis/.gitkeep

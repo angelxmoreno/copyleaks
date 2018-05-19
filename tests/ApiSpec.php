@@ -17,6 +17,8 @@ describe(Api::class, function () {
             getenv('COPYLEAKS_PRODUCT')
         );
 
+        $api->setSandboxModeEnabled(true);
+
         return $api;
     });
     it('exists', function () {
