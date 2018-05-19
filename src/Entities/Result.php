@@ -101,7 +101,7 @@ class Result
     public static function createFromResponse(Response $response)
     {
         $instance = new self();
-        $id = self::getIdFromUrl($response->getBodyProperty('URL'));
+        $id = self::getIdFromUrl($response->getBodyProperty('ComparisonReport'));
         $instance->setId($id);
         $instance->setUrl($response->getBodyProperty('URL'));
         $instance->setPercentCopied($response->getBodyProperty('Percents'));

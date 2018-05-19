@@ -8,13 +8,13 @@ use Axm\CopyLeaks\Response\Response;
  * Trait Account
  * @package Axm\CopyLeaks\Api
  *
- * @method Response buildRequest(string $type, string $uri, array $params)
+ * @method Response buildRequest(string $type, string $uri, array $params = [], array $headers = [])
+ * @method Response buildAuthenticatedRequest(string $type, string $uri, array $params = [], array $headers = [])
  */
 trait Account
 {
     /**
      * @return string
-     *
      */
     public function login()
     {

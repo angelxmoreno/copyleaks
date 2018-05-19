@@ -8,6 +8,12 @@ use Axm\CopyLeaks\Collections\ResultsCollection;
 use Axm\CopyLeaks\Collections\ProcessesCollection;
 
 describe(Api::class, function () {
+    given('process_id', function () {
+        return '7e91ac75-35b7-41f3-bb50-431be1430ade';
+    });
+    given('result_id', function () {
+        return 4180468;
+    });
     given('api', function () {
         $http = new RequestsAdapter();
         $api = new Api(
@@ -16,7 +22,6 @@ describe(Api::class, function () {
             getenv('COPYLEAKS_API_KEY'),
             getenv('COPYLEAKS_PRODUCT')
         );
-
         $api->setSandboxModeEnabled(true);
 
         return $api;
@@ -71,22 +76,18 @@ describe(Api::class, function () {
     });
     context('When working with processes', function () {
         it('can check the status', function () {
-            $process_id = '7e91ac75-35b7-41f3-bb50-431be1430ade';
-            $status = $this->api->status($process_id);
+            $status = $this->api->status($this->process_id);
             expect($status)
                 ->toBeAn('int');
         });
         context('When getting results', function () {
             it('creates a ' . ResultsCollection::class, function () {
-                $process_id = '7e91ac75-35b7-41f3-bb50-431be1430ade';
-                $results = $this->api->result($process_id);
+                $results = $this->api->result($this->process_id);
                 expect($results)
                     ->toBeAnInstanceOf(ResultsCollection::class);
             });
             it('contains an array of ' . Result::class, function () {
-                $process_id = '7e91ac75-35b7-41f3-bb50-431be1430ade';
-                /** @var ResultsCollection $results */
-                $results = $this->api->result($process_id);
+                $results = $this->api->result($this->process_id);
                 $actual = $results->every(function ($element) {
                     $result_class = Result::class;
 
@@ -95,6 +96,24 @@ describe(Api::class, function () {
                 expect($actual)
                     ->toBeTruthy();
             });
+        });
+    });
+    fcontext('When working with downloads', function () {
+        it('can get a source text', function () {
+            $text = $this->api->sourceText($this->process_id);
+            expect($text)
+                ->toBeA('string');
+        });
+        it('can get a result text', function () {
+            $text = $this->api->resultText($this->result_id);
+            expect($text)
+                ->toBeA('string');
+        });
+        it('can get a comparison report', function () {
+            $report = $this->api->comparisonReport($this->result_id);
+            var_dump($report);
+            expect($report)
+                ->toBeA('array');
         });
     });
 });

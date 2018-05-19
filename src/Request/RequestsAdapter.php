@@ -37,11 +37,14 @@ class RequestsAdapter extends RequestBase
         $url = $data
             ? $url . '?' . http_build_query($data)
             : $url;
-
         $response = Requests::get($url, $headers);
-        $body = $response->headers->getValues('copyleaks-error-code')
-            ? ['Message' => $response->body]
-            : $this->decodeJson($response->body);
+        if ($response->headers->getValues('copyleaks-error-code')) {
+            $body = ['Message' => $response->body];
+        } elseif($this->isJson($response->body)) {
+            $body = $this->decodeJson($response->body);
+        } else {
+            $body = [$response->body];
+        }
 
         return Response::build($response->status_code, $response->success, $body);
     }
