@@ -40,7 +40,7 @@ class RequestsAdapter extends RequestBase
         $response = Requests::get($url, $headers);
         if ($response->headers->getValues('copyleaks-error-code')) {
             $body = ['Message' => $response->body];
-        } elseif($this->isJson($response->body)) {
+        } elseif ($this->isJson($response->body)) {
             $body = $this->decodeJson($response->body);
         } else {
             $body = [$response->body];
