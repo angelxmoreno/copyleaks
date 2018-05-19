@@ -18,5 +18,9 @@ define('SAMPLE_DOCS_DIR', ROOT . implode(DS, [
         'sample_docs',
         ''
     ]));
-$dotenv = new Dotenv\Dotenv(ROOT);
-$dotenv->load();
+$env_file = ROOT . '.env';
+if (file_exists($env_file)) {
+    (new Dotenv\Dotenv(ROOT))->load();
+}
+
+
