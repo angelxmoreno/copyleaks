@@ -2,6 +2,7 @@
 namespace Axm\CopyLeaks\Collections;
 
 use Cake\Collection\CollectionTrait;
+use Rakshazi\GetSetTrait;
 
 /**
  * Class CollectionBase
@@ -10,7 +11,8 @@ use Cake\Collection\CollectionTrait;
 abstract class CollectionBase
 {
     use CollectionTrait;
-
+    use GetSetTrait;
+    
     /**
      * @var array
      */

@@ -23,7 +23,6 @@ abstract class RequestBase implements RequestInterface
     {
         $response = $this->post($url, $data, $headers);
         $this->ensureResponseType($response);
-
         if (!$response->isSuccess()) {
             throw new CopyLeaksApiException(
                 [$response->getBodyProperty('Message')],
@@ -46,7 +45,6 @@ abstract class RequestBase implements RequestInterface
     {
         $response = $this->get($url, $data, $headers);
         $this->ensureResponseType($response);
-
         if (!$response->isSuccess()) {
             throw new CopyLeaksApiException(
                 [$response->getBodyProperty('Message')],
@@ -100,5 +98,16 @@ abstract class RequestBase implements RequestInterface
         } else {
             throw new \RuntimeException('Invalid JSON while decoding. ' . $json_string);
         }
+    }
+
+    /**
+     * @param string $string
+     * @return bool
+     */
+    protected function isJson($string)
+    {
+        json_decode($string);
+
+        return (json_last_error() == JSON_ERROR_NONE);
     }
 }

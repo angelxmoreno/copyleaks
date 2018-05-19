@@ -4,7 +4,6 @@ namespace Axm\CopyLeaks\Api;
 use Axm\CopyLeaks\Collections\ProcessesCollection;
 use Axm\CopyLeaks\Collections\ResultsCollection;
 use Axm\CopyLeaks\Entities\Process;
-use Axm\CopyLeaks\Entities\Result;
 use Axm\CopyLeaks\ProductEndPoints;
 use Axm\CopyLeaks\Response\Response;
 
@@ -13,14 +12,11 @@ use Axm\CopyLeaks\Response\Response;
  * @package Axm\CopyLeaks\Api
  *
  * @method string getApiProduct()
- * @method Response buildRequest(string $type, string $uri, array $params, array $headers)
- * @method Response buildAuthenticatedRequest(string $type, string $uri, array $params, array $headers)
+ * @method Response buildRequest(string $type, string $uri, array $params = [], array $headers = [])
+ * @method Response buildAuthenticatedRequest(string $type, string $uri, array $params = [], array $headers = [])
  */
 trait Product
 {
-
-    protected $api_calls = [];
-
     /**
      * @param string $url
      * @return mixed

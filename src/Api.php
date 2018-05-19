@@ -27,6 +27,7 @@ class Api
     use GetSetTrait;
     use Api\Account;
     use Api\Product;
+    use Api\Downloads;
 
     /**
      * @var RequestBase
