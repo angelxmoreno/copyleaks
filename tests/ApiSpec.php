@@ -99,7 +99,7 @@ describe(Api::class, function () {
             });
         });
     });
-    fcontext('When working with downloads', function () {
+    context('When working with downloads', function () {
         it('can get a source text', function () {
             $text = $this->api->sourceText($this->process_id);
             expect($text)
