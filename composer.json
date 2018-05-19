@@ -41,7 +41,7 @@
     "cs:fix": "phpcbf --colors --standard=PSR2 ./src ./tests",
     "tests:check": "kahlan --cc=true --reporter=verbose",
     "tests:coverage": "kahlan --cc=true --reporter=verbose --coverage=4",
-    "tests:report": "./bin/sendTestCoverage.sh",
+    "tests:report": "sh ./bin/sendTestCoverage.sh",
     "tests:clover": "kahlan --no-header --cc=true --reporter=bar --clover=clover.xml"
   },
   "require-dev": {
