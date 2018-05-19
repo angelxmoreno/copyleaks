@@ -22,5 +22,3 @@ $env_file = ROOT . '.env';
 if (file_exists($env_file)) {
     (new Dotenv\Dotenv(ROOT))->load();
 }
-
-
