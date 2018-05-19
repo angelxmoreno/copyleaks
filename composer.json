@@ -41,11 +41,14 @@
     "cs:fix": "phpcbf --colors --standard=PSR2 ./src ./tests",
     "tests:check": "kahlan --cc=true --reporter=verbose",
     "tests:coverage": "kahlan --cc=true --reporter=verbose --coverage=4",
-    "tests:report": "kahlan --cc=true --reporter=bar --coverage=4 --clover=clover.xml",
+    "tests:report": "./bin/sendTestCoverage.sh",
     "tests:clover": "kahlan --no-header --cc=true --reporter=bar --clover=clover.xml"
   },
   "require-dev": {
+    "angelxmoreno/get-set-annotations": "^1.1",
+    "codeclimate/php-test-reporter": "^0.4.4",
     "friendsofphp/php-cs-fixer": "^2.11",
-    "kahlan/kahlan": "^4.1"
+    "kahlan/kahlan": "^4.1",
+    "vlucas/phpdotenv": "^2.4"
   }
 }

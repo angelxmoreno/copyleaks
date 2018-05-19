@@ -4,3 +4,5 @@ vendor
 
 docker/data/redis/*
 !docker/data/redis/.gitkeep
+
+clover.xml
